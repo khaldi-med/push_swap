@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:44:31 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/03/21 00:35:59 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/03/21 01:08:28 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ void	free_list(t_stack **stack)
 void	ft_error(t_stack **a)
 {
 	write(2, "Error!\n", 7);
-	if (a != NULL)
-		free_list(a);
+	free_list(a);
 	exit(1);
 }
 
@@ -53,7 +52,11 @@ int	ft_check(char *s)
 	i = 0;
 	while (s[i])
 	{
-		if (!(s[i] >= '0' && s[i] <= '9'))
+		if (s[i] == '+' || s[i] == '-')
+			i++;
+		if (s[i] == '+' || s[i] == '-')
+			return (1);
+		else if (!ft_isdigit(s[i]))
 			return (1);
 		i++;
 	}
@@ -112,6 +115,11 @@ int	main(int ac, char **av)
 	if (ac > 1)
 	{
 		ft_parse_inp(av, &a);
+	}
+	while (a != NULL)
+	{
+		printf("%d\n", a->value);
+		a = a->next;
 	}
 	return (0);
 }
