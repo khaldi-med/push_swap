@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:44:31 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/03/20 22:21:06 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/03/21 00:35:59 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,13 @@
 
 void	free_args(char **split)
 {
-	while (*split)
-		free((*split)++);
+	int	i;
+
+	i = 0;
+	if (!split)
+		return ;
+	while (split[i])
+		free(split[i++]);
 	free(split);
 }
 
