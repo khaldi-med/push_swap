@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 21:48:46 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/03/22 02:29:34 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/03/22 02:48:36 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,43 @@ void	ra_rb(t_stack **a, t_stack **b)
 	ra(a);
 	rb(b);
 	write(1, "rr\n", 3);
+}
+
+// rotate reverse
+void	rot_rev(t_stack **stack)
+{
+	t_stack	*tmp;
+	t_stack	*end;
+
+	if (!*stack || !(*stack)->next)
+		return ;
+	end = *stack;
+	while (end->next)
+		end = end->next;
+	tmp = end->next;
+	end->next = NULL;
+	tmp->next = *stack;
+	*stack = tmp;
+}
+
+// rot_rev a
+void	rot_rev_a(t_stack **a)
+{
+	rot_rev(a);
+	write(1, "rra\n", 4);
+}
+
+// rot_rev b
+void	rot_rev_b(t_stack **b)
+{
+	rot_rev(b);
+	write(1, "rrb\n", 4);
+}
+
+// rra_rrb
+void	rra_rrb(t_stack **a, t_stack **b)
+{
+	rot_rev_a(a);
+	rot_rev_b(b);
+	write(1, "rrr\n", 4);
 }
