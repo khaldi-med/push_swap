@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 21:48:46 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/03/22 00:06:04 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/03/22 02:29:34 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	sa(t_stack **a)
 }
 
 // ss
-void	ss(t_stack **a, t_stack **b)
+void	sa_sb(t_stack **a, t_stack **b)
 {
 	swap(a);
 	swap(b);
@@ -73,12 +73,41 @@ void	pb(t_stack **b, t_stack **a)
 	write(1, "pb\n", 3);
 }
 
-// ra
+// rotate
 void	rotate(t_stack **stack)
 {
 	t_stack	*tmp;
+	t_stack	*end;
 
 	if (!*stack || !(*stack)->next)
 		return ;
 	tmp = *stack;
+	*stack = (*stack)->next;
+	end = *stack;
+	while (end->next)
+		end = end->next;
+	end->next = tmp;
+	tmp->next = NULL;
+}
+
+// rotate a
+void	ra(t_stack **a)
+{
+	rotate(a);
+	write(1, "ra\n", 3);
+}
+
+// rotate b
+void	rb(t_stack **b)
+{
+	rotate(b);
+	write(1, "rb\n", 3);
+}
+
+// ra rb
+void	ra_rb(t_stack **a, t_stack **b)
+{
+	ra(a);
+	rb(b);
+	write(1, "rr\n", 3);
 }
