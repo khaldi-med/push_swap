@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:44:31 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/03/21 01:55:35 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/03/22 01:22:27 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	free_args(char **split)
 	int	i;
 
 	i = 0;
-	if (!split)
+	if (!split || !(*split))
 		return ;
 	while (split[i])
 		free(split[i++]);
@@ -45,7 +45,7 @@ void	ft_print_error(t_stack **a)
 	exit(1);
 }
 
-int	ft_check_duplicate_num(t_stack *stack, int n)
+int	dup_num(t_stack *stack, int n)
 {
 	t_stack	*tmp;
 
@@ -103,30 +103,24 @@ void	ft_parse_inp(char **s, t_stack **a)
 	int		i;
 	int		j;
 	char	**split;
-	int		value;
 
-	value = 0;
 	i = 1;
 	while (s[i])
 	{
-		if (ft_check_input(s[i]))
-			ft_print_error(a);
 		split = ft_split(s[i], ' ');
 		j = 0;
 		while (split[j])
 		{
-			value = ft_atoi(split[j]);
-			if (ft_check_duplicate_num(*a, value))
+			if ((ft_atoi(split[j]) < INT_MIN) || (ft_atoi(split[j]) > INT_MAX)
+				|| (dup_num(*a, ft_atoi(split[j])) || ft_check_input(split[j])))
 			{
-				if (split)
-					free_args(split);
+				free_args(split);
 				ft_print_error(a);
 			}
-			ft_add_back(a, value);
+			ft_add_back(a, ft_atoi(split[j]));
 			j++;
 		}
-		if (split)
-			free_args(split);
+		free_args(split);
 		i++;
 	}
 }

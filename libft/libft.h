@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 23:44:52 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/03/18 22:45:17 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/03/22 00:38:15 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 // Builte in library
+# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -35,7 +36,7 @@ void				*ft_calloc(size_t count, size_t size);
 int					ft_memcmp(const void *a1, const void *a2, size_t size);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
-int					ft_atoi(const char *str);
+long				ft_atoi(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
