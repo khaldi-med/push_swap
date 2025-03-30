@@ -6,7 +6,7 @@
 #    By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/18 22:35:22 by mohkhald          #+#    #+#              #
-#    Updated: 2025/03/28 22:32:10 by mohkhald         ###   ########.fr        #
+#    Updated: 2025/03/30 01:23:02 by mohkhald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,16 +20,20 @@ LIBFT = libft/libft.a
 
 SOURCE = push_swap.c
 
+ALGO_SRC = push_algo.c
+
+SWP_UTILIS = push_swap_utilis.c
+
 NAME = push_swap
 
 RM = rm -Rf
 
 all: $(NAME)
 
-$(NAME): $(SOURCE)
+$(NAME): $(SOURCE) 
 	@make -C ft_printf/
 	@make -C libft/
-	@$(CC) $(CFLAGS) $(SOURCE)  $(PRINTF) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(SOURCE) $(ALGO_SRC) $(SWP_UTILIS) $(PRINTF) $(LIBFT) -o $(NAME)
 
 clean: 
 	@make clean -C ft_printf/

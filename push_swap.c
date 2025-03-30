@@ -6,12 +6,11 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:44:31 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/03/30 00:21:20 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/03/30 02:54:38 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	free_args(char **split)
 {
@@ -130,15 +129,21 @@ int	main(int ac, char **av)
 	t_stack	*a;
 	t_stack	*b;
 
+	if (!av[1] || !av[1][0])
+	{
+		write(2, "Error!\n", 7);
+		return (-1);
+	}
 	a = NULL;
 	b = NULL;
 	if (ac > 1)
 	{
 		ft_parse_inp(av, &a);
+		sort_three(&a);
 	}
 	while (a != NULL)
 	{
-		printf("%d\n", a->value);
+		ft_printf("%d\n", a->value);
 		a = a->next;
 	}
 	return (0);

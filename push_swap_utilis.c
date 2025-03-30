@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 21:48:46 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/03/22 02:48:36 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/03/30 02:54:31 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	sa(t_stack **a)
 	write(1, "sa\n", 3);
 }
 
-// ss
+// sa sb
 void	sa_sb(t_stack **a, t_stack **b)
 {
 	swap(a);
