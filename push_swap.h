@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:17:35 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/03/22 02:56:16 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/03/30 00:15:42 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+// Main sturct
 typedef struct s_stack
 {
 	int				value;
@@ -26,7 +27,6 @@ typedef struct s_stack
 }					t_stack;
 
 // operation functions
-
 void				swap(t_stack **stack);
 void				sb(t_stack **b);
 void				sa(t_stack **a);
@@ -42,4 +42,5 @@ void				rot_rev(t_stack **stack);
 void				rot_rev_a(t_stack **a);
 void				rot_rev_b(t_stack **b);
 void				rra_rrb(t_stack **a, t_stack **b);
+
 #endif
