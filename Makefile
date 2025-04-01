@@ -6,9 +6,13 @@
 #    By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/18 22:35:22 by mohkhald          #+#    #+#              #
-#    Updated: 2025/03/30 01:23:02 by mohkhald         ###   ########.fr        #
+#    Updated: 2025/04/01 23:15:38 by mohkhald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
+SRCS = push_swap.c push_algo.c free.c check_and_error.c\
+push_items.c rotate_items.c rot_rev_items.c swap_items.c
 
 CC = cc
 
@@ -18,22 +22,16 @@ PRINTF = ft_printf/libftprintf.a
 
 LIBFT = libft/libft.a
 
-SOURCE = push_swap.c
-
-ALGO_SRC = push_algo.c
-
-SWP_UTILIS = push_swap_utilis.c
-
 NAME = push_swap
 
 RM = rm -Rf
 
 all: $(NAME)
 
-$(NAME): $(SOURCE) 
+$(NAME): $(OBJ) 
 	@make -C ft_printf/
 	@make -C libft/
-	@$(CC) $(CFLAGS) $(SOURCE) $(ALGO_SRC) $(SWP_UTILIS) $(PRINTF) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(SRCS) $(PRINTF) $(LIBFT) -o $(NAME)
 
 clean: 
 	@make clean -C ft_printf/

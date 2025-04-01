@@ -6,75 +6,11 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:44:31 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/03/30 02:54:38 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/01 22:39:44 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_args(char **split)
-{
-	int	i;
-
-	i = 0;
-	if (!split || !(*split))
-		return ;
-	while (split[i])
-		free(split[i++]);
-	free(split);
-}
-
-void	free_list(t_stack **stack)
-{
-	t_stack	*tmp;
-
-	while (*stack)
-	{
-		tmp = *stack;
-		*stack = (*stack)->next;
-		free(tmp);
-	}
-	*stack = NULL;
-}
-
-void	ft_print_error(t_stack **a)
-{
-	write(2, "Error!\n", 7);
-	free_list(a);
-	exit(1);
-}
-
-int	dup_num(t_stack *stack, int n)
-{
-	t_stack	*tmp;
-
-	tmp = stack;
-	while (tmp)
-	{
-		if (tmp->value == n)
-			return (1);
-		tmp = tmp->next;
-	}
-	return (0);
-}
-
-int	ft_check_input(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == '+' || s[i] == '-')
-			i++;
-		if (s[i] == '+' || s[i] == '-')
-			return (1);
-		else if (!ft_isdigit(s[i]))
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 void	ft_add_back(t_stack **stack, int n)
 {
@@ -111,15 +47,16 @@ void	ft_parse_inp(char **s, t_stack **a)
 		while (split[j])
 		{
 			if ((ft_atoi(split[j]) < INT_MIN) || (ft_atoi(split[j]) > INT_MAX)
-				|| (dup_num(*a, ft_atoi(split[j])) || ft_check_input(split[j])))
+				|| (ft_duplicate(*a, ft_atoi(split[j]))
+					|| ft_check_input(split[j])))
 			{
-				free_args(split);
+				free_stack(split);
 				ft_print_error(a);
 			}
 			ft_add_back(a, ft_atoi(split[j]));
 			j++;
 		}
-		free_args(split);
+		free_stack(split);
 		i++;
 	}
 }
@@ -128,6 +65,7 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
+	t_stack	*t;
 
 	if (!av[1] || !av[1][0])
 	{
@@ -141,10 +79,11 @@ int	main(int ac, char **av)
 		ft_parse_inp(av, &a);
 		sort_three(&a);
 	}
-	while (a != NULL)
+	t = a;
+	while (t != NULL)
 	{
-		ft_printf("%d\n", a->value);
-		a = a->next;
+		ft_printf("%d\n", t->value);
+		t = t->next;
 	}
 	return (0);
 }

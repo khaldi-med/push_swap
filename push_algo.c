@@ -6,34 +6,44 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 00:25:14 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/03/30 02:57:08 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/01 21:01:32 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	stack_size(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	while (stack)
+	{
+		i++;
+		stack = stack->next;
+	}
+	return (i);
+}
+
 void	sort_three(t_stack **a)
 {
-	t_stack	*first;
-	t_stack	*second;
-	t_stack	*third;
+	int	n1;
+	int	n2;
+	int	n3;
 
-	first = *a;
-	second = first->next;
-	third = second->next;
-	if (first->value > second->value && first->value > third->value)
+	n1 = (*a)->value;
+	n2 = (*a)->next->value;
+	n3 = (*a)->next->next->value;
+	if (n1 > n2 && n2 > n3)
 	{
-		if (second->value < third->value)
-			sa(a);
-		else
-		{
-			sa(a);
-			rot_rev_a(a);
-		}
+		ra(a);
+		sa(a);
 	}
-	if (second->value > first->value && second->value > third->value)
+	else if (n1 > n2 && n1 > n3)
+		ra(a);
+	else if (n2 > n1 && n2 > n3)
 	{
-		if (first->value > third->value)
+		if (n1 < n3)
 			rot_rev_a(a);
 		else
 		{
@@ -41,7 +51,6 @@ void	sort_three(t_stack **a)
 			sa(a);
 		}
 	}
-	if (third->value > second->value && third->value > first->value)
-	{
-	}
+	else if (n3 > n1 && n3 > n2 && n2 > n1)
+		sa(a);
 }
