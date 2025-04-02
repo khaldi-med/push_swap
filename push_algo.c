@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 00:25:14 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/02 01:34:25 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/02 02:57:27 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,17 @@ void	sort_three(t_stack **a)
 
 	n2 = (*a)->next->value;
 	n3 = (*a)->next->next->value;
-	if ((*a)->value > n2 && n2 > n3)
+	if ((*a)->value > n2 && (*a)->value > n3)
 	{
-		ra(a);
-		sa(a);
+		if (n2 > n3)
+		{
+			ra(a);
+			sa(a);
+		}
+		else
+			ra(a);
 	}
-	else if ((*a)->value > n2 && (*a)->value > n3)
+	else if (n2 > (*a)->value && n2 > n3)
 		ra(a);
 	else if (n2 > (*a)->value && n2 > n3)
 	{
