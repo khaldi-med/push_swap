@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_algo.c                                        :+:      :+:    :+:   */
+/*   push_utilis.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/30 00:25:14 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/02 21:38:24 by mohkhald         ###   ########.fr       */
+/*   Created: 2025/04/02 21:11:56 by mohkhald          #+#    #+#             */
+/*   Updated: 2025/04/02 21:32:09 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three(t_stack **a)
+int	stack_size(t_stack *stack)
 {
-	t_stack	*larg_node;
+	int	i;
 
-	larg_node = ft_larg_node(*a);
-	if (larg_node == *a)
-		ra(a);
-	else if (larg_node == (*a)->next)
-		rot_rev_a(a);
-	if ((*a)->value > (*a)->next->value)
-		sa(a);
+	i = 0;
+	while (stack)
+	{
+		i++;
+		stack = stack->next;
+	}
+	return (i);
+}
+
+t_stack	*ft_larg_node(t_stack *stack)
+{
+	t_stack	*node;
+
+	node = stack;
+	while (stack)
+	{
+		if (stack->value > node->value)
+			node = stack;
+		stack = stack->next;
+	}
+	return (node);
 }
