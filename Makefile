@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 
-SRCS = push_swap.c sort_five.c sort_three.c free.c check_and_error.c\
+SRCS = push_swap.c sort_stack.c sort_five.c sort_three.c free.c check_and_error.c\
 push_items.c rotate_items.c rot_rev_items.c swap_items.c push_utilis.c
 
 CC = cc

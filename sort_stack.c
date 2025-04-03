@@ -33,7 +33,7 @@ int	*ft_fill_arr(t_stack *stack, int size)
 int	*ft_sort_arr(t_stack *stack, int size)
 {
 	int	*arr;
-	int	*tmp;
+	int	tmp;
 	int	i;
 	int	j;
 
@@ -66,13 +66,13 @@ void	ft_set_index(t_stack **a)
 
 	tmp = (*a);
 	len = ft_stack_size(*a);
-	arr = ft_sort_stack(*a, len);
+	arr = ft_sort_arr(*a, len);
 	while (tmp)
 	{
 		i = 0;
 		while (i < len)
 		{
-			if (arr[i] == tmp->data)
+			if (arr[i] == tmp->value)
 			{
 				tmp->index = i;
 				break ;
@@ -85,7 +85,7 @@ void	ft_set_index(t_stack **a)
 	arr = NULL;
 }
 
-void	ft_sort_stack(t_stack **a, t_stack **b, int max)
+void	ft_sort_stack_rang(t_stack **a, t_stack **b, int max)
 {
 	int	min;
 
@@ -122,7 +122,7 @@ void	ft_move_larg_to_a(t_stack **a, t_stack **b)
 		if (index == 0)
 			pa(a, b);
 		else if (index > size)
-			rrb(b);
+			rot_rev_b(b);
 		else if (index <= size)
 			rb(b);
 	}

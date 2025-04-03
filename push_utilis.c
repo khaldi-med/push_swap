@@ -55,17 +55,17 @@ int	ft_max_index(t_stack *stack)
 	int	max_index;
 	int	tmp;
 
-	max_idx = 0;
+	max_index = 0;
 	i = 0;
 	if (!stack)
 		return (-1);
-	tmp = stack->data;
+	tmp = stack->value;
 	while (stack)
 	{
-		if (tmp < stack->data)
+		if (tmp < stack->value)
 		{
-			max_idx = i;
-			tmp = stack->data;
+			max_index = i;
+			tmp = stack->value;
 		}
 		i++;
 		stack = stack->next;

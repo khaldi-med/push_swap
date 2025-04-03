@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	rot_rev(t_stack **stack)
+void	ft_rot_rev(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*end;
@@ -33,13 +33,13 @@ void	rot_rev(t_stack **stack)
 
 void	rot_rev_a(t_stack **a)
 {
-	rot_rev(a);
+	ft_rot_rev(a);
 	write(1, "rra\n", 4);
 }
 
 void	rot_rev_b(t_stack **b)
 {
-	rot_rev(b);
+	ft_rot_rev(b);
 	write(1, "rrb\n", 4);
 }
 

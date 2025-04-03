@@ -49,7 +49,7 @@ void				ft_free_list(t_stack **stack);
 void				ft_add_back(t_stack **stack, int n);
 void				ft_sort_stack(t_stack **a, t_stack **b);
 void				ft_set_index(t_stack **a);
-void				ft_sort_stack(t_stack **a, t_stack **b, int max);
+void				ft_sort_stack_rang(t_stack **a, t_stack **b, int max);
 void				ft_move_larg_to_a(t_stack **a, t_stack **b);
 
 int					ft_max_index(t_stack *stack);

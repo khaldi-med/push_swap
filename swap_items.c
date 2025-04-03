@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	swap(t_stack **stack)
+void	ft_swap(t_stack **stack)
 {
 	int	tmp;
 
@@ -25,19 +25,19 @@ void	swap(t_stack **stack)
 
 void	sb(t_stack **b)
 {
-	swap(b);
+	ft_swap(b);
 	write(1, "sb\n", 3);
 }
 
 void	sa(t_stack **a)
 {
-	swap(a);
+	ft_swap(a);
 	write(1, "sa\n", 3);
 }
 
 void	sa_sb(t_stack **a, t_stack **b)
 {
-	swap(a);
-	swap(b);
+	ft_swap(a);
+	ft_swap(b);
 	write(1, "ss\n", 3);
 }
