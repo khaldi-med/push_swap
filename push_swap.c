@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:44:31 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/03 21:28:40 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/03 22:46:37 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,13 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
+	t_stack	*tmpa;
+	t_stack	*tmpb;
 
+	b = NULL;
+	a = NULL;
+	tmpa = a;
+	tmpb = b;
 	if (!av[1] || !av[1][0])
 	{
 		write(2, "Error!\n", 7);
@@ -76,7 +82,9 @@ int	main(int ac, char **av)
 	if (ac > 1)
 		ft_parse_inp(av, &a);
 	if (!ft_is_sorted(a))
+	{
 		ft_sort_stack(&a, &b);
-	ft_move_larg_to_a(&a, &b);
+		ft_move_larg_to_a(&a, &b);
+	}
 	return (0);
 }

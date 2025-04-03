@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 05:42:52 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/03 05:43:02 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/03 23:12:02 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,13 @@ void	ft_sort_stack_rang(t_stack **a, t_stack **b, int max)
 	{
 		if ((*a)->index >= min && (*a)->index <= max)
 		{
-			pb(a, b);
+			pb(b, a);
 			min++;
 			max++;
 		}
 		else if ((*a)->index < min)
 		{
-			pb(a, b);
+			pb(b, a);
 			rb(b);
 			min++;
 			max++;
