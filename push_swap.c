@@ -77,5 +77,7 @@ int	main(int ac, char **av)
 		ft_parse_inp(av, &a);
 	if (!ft_is_sorted(a))
 		ft_sort_stack(&a, &b);
+	ft_move_larg_to_a(&a, &b);
+	ft_free_list(&a);
 	return (0);
 }

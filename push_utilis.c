@@ -48,3 +48,27 @@ void	ft_sort_stack(t_stack **a, t_stack **b)
 	else if (len == 5 || len == 4)
 		ft_sort_five(a, b);
 }
+
+int	ft_max_index(t_stack *stack)
+{
+	int	i;
+	int	max_index;
+	int	tmp;
+
+	max_idx = 0;
+	i = 0;
+	if (!stack)
+		return (-1);
+	tmp = stack->data;
+	while (stack)
+	{
+		if (tmp < stack->data)
+		{
+			max_idx = i;
+			tmp = stack->data;
+		}
+		i++;
+		stack = stack->next;
+	}
+	return (max_index);
+}
