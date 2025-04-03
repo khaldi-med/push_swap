@@ -75,7 +75,7 @@ int	main(int ac, char **av)
 	b = NULL;
 	if (ac > 1)
 		ft_parse_inp(av, &a);
-	if(!ft_is_sorted(a))
+	if (!ft_is_sorted(a))
 		ft_sort_stack(&a, &b);
 	return (0);
 }
