@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 23:04:48 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/01 23:14:32 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/03 01:15:43 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ void	rot_rev(t_stack **stack)
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	end = *stack;
-	while (end->next)
-		end = end->next;
-	tmp = end->next;
-	end->next = NULL;
+	tmp = *stack;
+	end = NULL;
+	while (tmp->next)
+	{
+		end = tmp;
+		tmp = tmp->next;
+	}
 	tmp->next = *stack;
+	end->next = NULL;
 	*stack = tmp;
 }
 

@@ -57,7 +57,7 @@ void	ft_sort_five(t_stack **a, t_stack **b)
 				rot_rev_a(a);
 			min_pos = ft_min_pos(*a);
 		}
-		pb(a, b);
+		pb(b, a);
 		pushed++;
 	}
 	ft_sort_three(a);
