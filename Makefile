@@ -6,13 +6,13 @@
 #    By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/18 22:35:22 by mohkhald          #+#    #+#              #
-#    Updated: 2025/04/02 02:45:47 by mohkhald         ###   ########.fr        #
+#    Updated: 2025/04/02 21:58:07 by mohkhald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-SRCS = push_swap.c push_algo.c free.c check_and_error.c\
-push_items.c rotate_items.c rot_rev_items.c swap_items.c
+SRCS = push_swap.c sort_five.c sort_three.c free.c check_and_error.c\
+push_items.c rotate_items.c rot_rev_items.c swap_items.c push_utilis.c
 
 CC = cc
 

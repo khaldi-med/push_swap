@@ -15,7 +15,7 @@
 void	ft_print_error(t_stack **a)
 {
 	write(2, "Error!\n", 7);
-	free_list(a);
+	ft_free_list(a);
 	exit(1);
 }
 

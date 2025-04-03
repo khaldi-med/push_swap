@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:44:31 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/01 22:39:44 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/02 22:08:08 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ void	ft_parse_inp(char **s, t_stack **a)
 				|| (ft_duplicate(*a, ft_atoi(split[j]))
 					|| ft_check_input(split[j])))
 			{
-				free_stack(split);
+				ft_free_stack(split);
 				ft_print_error(a);
 			}
 			ft_add_back(a, ft_atoi(split[j]));
 			j++;
 		}
-		free_stack(split);
+		ft_free_stack(split);
 		i++;
 	}
 }
@@ -65,7 +65,6 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_stack	*t;
 
 	if (!av[1] || !av[1][0])
 	{
@@ -75,15 +74,8 @@ int	main(int ac, char **av)
 	a = NULL;
 	b = NULL;
 	if (ac > 1)
-	{
 		ft_parse_inp(av, &a);
-		sort_three(&a);
-	}
-	t = a;
-	while (t != NULL)
-	{
-		ft_printf("%d\n", t->value);
-		t = t->next;
-	}
+	if(!ft_is_sorted(a))
+		ft_sort_stack(&a, &b);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 21:11:56 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/02 21:32:09 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/02 21:57:41 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	stack_size(t_stack *stack)
+int	ft_stack_size(t_stack *stack)
 {
 	int	i;
 
@@ -25,16 +25,22 @@ int	stack_size(t_stack *stack)
 	return (i);
 }
 
-t_stack	*ft_larg_node(t_stack *stack)
-{
-	t_stack	*node;
-
-	node = stack;
-	while (stack)
-	{
-		if (stack->value > node->value)
-			node = stack;
-		stack = stack->next;
+int ft_is_sorted(t_stack *a){
+	if(!a)
+		return 0;
+	while(a->next){
+		if(a->value > a->next->value)
+			return 0;
+		a = a->next;
 	}
-	return (node);
+	return 1;
+}
+
+void ft_sort_stack(t_stack **a, t_stack **b){
+	int len; 
+	len = ft_stack_size(*a);
+	if(len <= 3)
+		ft_sort_three(a);
+	else if(len == 5 || len == 4)
+		ft_sort_five(a, b);
 }

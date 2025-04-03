@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	free_stack(char **split)
+void	ft_free_stack(char **split)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ void	free_stack(char **split)
 	free(split);
 }
 
-void	free_list(t_stack **stack)
+void	ft_free_list(t_stack **stack)
 {
 	t_stack	*tmp;
 
