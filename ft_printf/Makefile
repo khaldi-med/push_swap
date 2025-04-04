@@ -6,7 +6,7 @@
 #    By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/08 03:24:35 by mohkhald          #+#    #+#              #
-#    Updated: 2024/12/26 00:17:16 by mohkhald         ###   ########.fr        #
+#    Updated: 2025/04/04 20:35:24 by mohkhald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,19 +30,19 @@ all: $(NAME)
 
 
 %.o: %.c ft_printf.h
-	$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
 
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 
 re: fclean all

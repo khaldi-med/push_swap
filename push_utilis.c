@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 21:11:56 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/04 01:42:57 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/04 22:06:44 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_is_sorted(t_stack *a)
 {
 	if (!a)
 		return (0);
-	while (a->next)
+	while (a)
 	{
 		if (a->value > a->next->value)
 			return (0);

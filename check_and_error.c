@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 22:19:54 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/01 22:35:44 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/04 22:31:24 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_print_error(t_stack **a)
 {
-	write(2, "Error!\n", 7);
+	write(2, "Error\n", 6);
 	ft_free_list(a);
-	exit(1);
+	exit(0);
 }
 
 int	ft_duplicate(t_stack *stack, int n)
@@ -38,13 +38,15 @@ int	ft_check_input(char *s)
 	int	i;
 
 	i = 0;
+	if (s[i] == '+' || s[i] == '-')
+		i++;
+	// 	if (!s[i])
+	// 		return (1);
 	while (s[i])
 	{
-		if (s[i] == '+' || s[i] == '-')
-			i++;
-		if (s[i] == '+' || s[i] == '-')
-			return (1);
-		else if (!ft_isdigit(s[i]))
+		// if (s[i] == '+' || s[i] == '-')
+		// 	return (1);
+		if (!ft_isdigit(s[i]))
 			return (1);
 		i++;
 	}

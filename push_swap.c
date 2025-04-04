@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:44:31 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/03 23:51:40 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/04 22:46:47 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void	ft_parse_inp(char **s, t_stack **a)
 	i = 1;
 	while (s[i])
 	{
+		if (!s || !s[i] || *s[i] == ' ' || *s[i] == '\t')
+		{
+			write(2, "Error\n", 6);
+			return ;
+		}
 		split = ft_split(s[i], ' ');
 		j = 0;
 		while (split[j])
@@ -61,17 +66,6 @@ void	ft_parse_inp(char **s, t_stack **a)
 	}
 }
 
-void	ft_print_stack(t_stack *stack)
-{
-	ft_printf("Sorted stack: ");
-	while (stack)
-	{
-		ft_printf("%d ", stack->value);
-		stack = stack->next;
-	}
-	ft_printf("\n");
-}
-
 int	main(int ac, char **av)
 {
 	t_stack	*a;
@@ -79,22 +73,16 @@ int	main(int ac, char **av)
 
 	b = NULL;
 	a = NULL;
-	if (!av[1] || !av[1][0])
-	{
-		write(2, "Error!\n", 7);
-		return (-1);
-	}
-	a = NULL;
-	b = NULL;
+	if (ac == 1)
+		return (0);
 	if (ac > 1)
 		ft_parse_inp(av, &a);
 	if (!ft_is_sorted(a))
 	{
 		ft_sort_stack(&a, &b);
 		ft_move_larg_to_a(&a, &b);
+		ft_free_list(&a);
+		ft_free_list(&b);
 	}
-	ft_print_stack(a);
-	ft_free_list(&a);
-	ft_free_list(&b);
 	return (0);
 }

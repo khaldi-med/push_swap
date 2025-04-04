@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:17:35 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/03 05:43:17 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/04 20:28:38 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,4 @@ int					ft_stack_size(t_stack *stack);
 int					ft_is_sorted(t_stack *a);
 int					*ft_sort_arr(t_stack *stack, int size);
 int					*ft_fill_arr(t_stack *stack, int size);
-void				ft_print_stack(t_stack *stack);
 #endif
