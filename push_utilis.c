@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 21:11:56 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/03 23:52:27 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/04 01:42:57 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_sort_stack(t_stack **a, t_stack **b)
 	else if (size <= 100)
 		ft_sort_stack_rang(a, b, 12);
 	else if (size > 100 && size <= 500)
-		ft_sort_stack_rang(a, b, 30);
+		ft_sort_stack_rang(a, b, 32);
 	else
 		ft_sort_stack_rang(a, b, 40);
 }
