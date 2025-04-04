@@ -33,34 +33,47 @@ void	ft_add_back(t_stack **stack, int n)
 	}
 }
 
+void	ft_process_number(char *num_str, t_stack **a, char **split)
+{
+	if ((ft_atoi(num_str) < INT_MIN) || (ft_atoi(num_str) > INT_MAX)
+		|| (ft_duplicate(*a, ft_atoi(num_str))
+			|| ft_check_input(num_str)))
+	{
+		ft_free_stack(split);
+		ft_print_error(a);
+	}
+	ft_add_back(a, ft_atoi(num_str));
+}
+
+void	ft_process_split(char **split, t_stack **a)
+{
+	int	j;
+
+	j = 0;
+	if (!split[j])
+	{
+		ft_free_stack(split);
+		ft_print_error(a);
+	}
+	while (split[j])
+	{
+		ft_process_number(split[j], a, split);
+		j++;
+	}
+}
+
 void	ft_parse_inp(char **s, t_stack **a)
 {
 	int		i;
-	int		j;
 	char	**split;
 
 	i = 1;
 	while (s[i])
 	{
-		if (!s || !s[i] || *s[i] == ' ' || *s[i] == '\t')
-		{
-			write(2, "Error\n", 6);
-			return ;
-		}
+		if (!s || !s[i] || *s[i] == '\0' || *s[i] == ' ' || *s[i] == '\t')
+			ft_print_error(a);
 		split = ft_split(s[i], ' ');
-		j = 0;
-		while (split[j])
-		{
-			if ((ft_atoi(split[j]) < INT_MIN) || (ft_atoi(split[j]) > INT_MAX)
-				|| (ft_duplicate(*a, ft_atoi(split[j]))
-					|| ft_check_input(split[j])))
-			{
-				ft_free_stack(split);
-				ft_print_error(a);
-			}
-			ft_add_back(a, ft_atoi(split[j]));
-			j++;
-		}
+		ft_process_split(split, a);
 		ft_free_stack(split);
 		i++;
 	}
