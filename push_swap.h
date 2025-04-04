@@ -51,6 +51,9 @@ void				ft_sort_stack(t_stack **a, t_stack **b);
 void				ft_set_index(t_stack **a);
 void				ft_sort_stack_rang(t_stack **a, t_stack **b, int max);
 void				ft_move_larg_to_a(t_stack **a, t_stack **b);
+void				ft_process_number(char *num_str, t_stack **a, char **split);
+void				ft_process_split(char **split, t_stack **a);
+void				ft_parse_inp(char **s, t_stack **a);
 
 int					ft_max_index(t_stack *stack);
 int					ft_min_pos(t_stack *stack);
