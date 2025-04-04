@@ -60,4 +60,5 @@ int					ft_stack_size(t_stack *stack);
 int					ft_is_sorted(t_stack *a);
 int					*ft_sort_arr(t_stack *stack, int size);
 int					*ft_fill_arr(t_stack *stack, int size);
+void				ft_print_stack(t_stack *stack);
 #endif

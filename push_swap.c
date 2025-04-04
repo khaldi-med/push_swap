@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:44:31 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/03 22:46:37 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/03 23:51:40 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,24 @@ void	ft_parse_inp(char **s, t_stack **a)
 	}
 }
 
+void	ft_print_stack(t_stack *stack)
+{
+	ft_printf("Sorted stack: ");
+	while (stack)
+	{
+		ft_printf("%d ", stack->value);
+		stack = stack->next;
+	}
+	ft_printf("\n");
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_stack	*tmpa;
-	t_stack	*tmpb;
 
 	b = NULL;
 	a = NULL;
-	tmpa = a;
-	tmpb = b;
 	if (!av[1] || !av[1][0])
 	{
 		write(2, "Error!\n", 7);
@@ -86,5 +93,8 @@ int	main(int ac, char **av)
 		ft_sort_stack(&a, &b);
 		ft_move_larg_to_a(&a, &b);
 	}
+	ft_print_stack(a);
+	ft_free_list(&a);
+	ft_free_list(&b);
 	return (0);
 }
