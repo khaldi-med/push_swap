@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:44:31 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/05 01:37:00 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/05 03:42:28 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
-	int		size;
 
 	b = NULL;
 	a = NULL;
@@ -104,17 +103,8 @@ int	main(int ac, char **av)
 		ft_parse_inp(av, &a);
 	if (a && !ft_is_sorted(a))
 	{
-		size = ft_stack_size(a);
-		if (size <= 3)
-			ft_sort_three(&a);
-		else if (size <= 5)
-			ft_sort_five(&a, &b);
-		else
-		{
-			ft_set_index(&a);
-			ft_sort_stack_rang(&a, &b, size <= 100 ? 15 : 30);
-			ft_move_larg_to_a(&a, &b);
-		}
+		ft_sort_stack(&a, &b);
+		ft_move_larg_to_a(&a, &b);
 	}
 	ft_free_list(&a);
 	ft_free_list(&b);
