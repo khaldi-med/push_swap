@@ -40,12 +40,8 @@ int	ft_check_input(char *s)
 	i = 0;
 	if (s[i] == '+' || s[i] == '-')
 		i++;
-	// 	if (!s[i])
-	// 		return (1);
 	while (s[i])
 	{
-		// if (s[i] == '+' || s[i] == '-')
-		// 	return (1);
 		if (!ft_isdigit(s[i]))
 			return (1);
 		i++;

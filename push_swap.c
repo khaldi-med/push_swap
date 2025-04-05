@@ -35,7 +35,6 @@ void	ft_add_back(t_stack **stack, int n)
 
 void	ft_process_number(char *num_str, t_stack **a, char **split)
 {
-	// write(2, "teste 4\n", 8);
 	if ((ft_atoi(num_str) < INT_MIN) || (ft_atoi(num_str) > INT_MAX)
 		|| (ft_duplicate(*a, ft_atoi(num_str)) || ft_check_input(num_str)))
 	{
@@ -55,7 +54,6 @@ void	ft_process_split(char **split, t_stack **a)
 		j++;
 	while (split[j])
 	{
-		// write(2, "teste 3\n", 8);
 		ft_process_number(split[j], a, split);
 		j++;
 	}
@@ -69,14 +67,12 @@ void	ft_parse_inp(char **s, t_stack **a)
 	i = 1;
 	while (s[i])
 	{
-		// write(2, "teste\n", 6);
 		if (!s || !s[i] || *s[i] == '\0')
 		{
 			write(2, "Error\n", 6);
 			ft_free_list(a);
 			exit(1);
 		}
-		// write(2, "teste 2\n", 8);
 		split = ft_split(s[i], ' ');
 		ft_process_split(split, a);
 		ft_free_stack(split);
@@ -96,13 +92,8 @@ int	main(int ac, char **av)
 	if (ac > 1)
 		ft_parse_inp(av, &a);
 	if (a && !ft_is_sorted(a))
-	{
 		ft_sort_stack(&a, &b);
-		ft_move_larg_to_a(&a, &b);
-		ft_free_list(&a);
-		ft_free_list(&b);
-	}
-	else if (a)
-		ft_free_list(&a);
+	ft_move_larg_to_a(&a, &b);
+	ft_free_list(&a);
 	return (0);
 }
