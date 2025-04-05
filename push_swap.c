@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:44:31 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/05 00:43:15 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/05 01:37:00 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	ft_add_back(t_stack **stack, int n)
 	new = malloc(sizeof(t_stack));
 	if (!new)
 	{
-		write(2, "Error\n", 6);
-		ft_free_list(stack);
-		exit(1);
+		ft_print_error(stack);
 	}
 	new->value = n;
 	new->next = NULL;
@@ -40,21 +38,17 @@ void	ft_add_back(t_stack **stack, int n)
 void	ft_process_number(char *num_str, t_stack **a, char **split)
 {
 	long	num;
-	
+
 	if (!num_str || ft_check_input(num_str))
 	{
-		write(2, "Error\n", 6);
 		ft_free_stack(split);
-		ft_free_list(a);
-		exit(1);
+		ft_print_error(a);
 	}
 	num = ft_atoi(num_str);
 	if (num < INT_MIN || num > INT_MAX || ft_duplicate(*a, num))
 	{
-		write(2, "Error\n", 6);
 		ft_free_stack(split);
-		ft_free_list(a);
-		exit(1);
+		ft_print_error(a);
 	}
 	ft_add_back(a, num);
 }
@@ -64,14 +58,10 @@ void	ft_process_split(char **split, t_stack **a)
 	int	j;
 
 	j = 0;
-	if (!split)
-		return;
 	if (!split[0])
 	{
-		write(2, "Error\n", 6);
 		ft_free_stack(split);
-		ft_free_list(a);
-		exit(1);
+		ft_print_error(a);
 	}
 	while (split[j])
 	{
@@ -87,30 +77,17 @@ void	ft_parse_inp(char **s, t_stack **a)
 
 	i = 1;
 	if (!s)
-	{
-		write(2, "Error\n", 6);
-		ft_free_list(a);
-		exit(1);
-	}
-	while (s[i])
-	{
-		if (!s[i] || *s[i] == '\0')
+		while (s[i])
 		{
-			write(2, "Error\n", 6);
-			ft_free_list(a);
-			exit(1);
+			if (!s[i] || *s[i] == '\0')
+				ft_print_error(a);
+			split = ft_split(s[i], ' ');
+			if (!split)
+				ft_print_error(a);
+			ft_process_split(split, a);
+			ft_free_stack(split);
+			i++;
 		}
-		split = ft_split(s[i], ' ');
-		if (!split)
-		{
-			write(2, "Error\n", 6);
-			ft_free_list(a);
-			exit(1);
-		}
-		ft_process_split(split, a);
-		ft_free_stack(split);
-		i++;
-	}
 }
 
 int	main(int ac, char **av)
@@ -127,8 +104,7 @@ int	main(int ac, char **av)
 	if (a && !ft_is_sorted(a))
 	{
 		ft_sort_stack(&a, &b);
-		if (b)
-			ft_move_larg_to_a(&a, &b);
+		ft_move_larg_to_a(&a, &b);
 	}
 	ft_free_list(&a);
 	ft_free_list(&b);
