@@ -45,7 +45,7 @@ void	rot_rev_b(t_stack **b)
 
 void	rra_rrb(t_stack **a, t_stack **b)
 {
-	rot_rev_a(a);
-	rot_rev_b(b);
+	ft_rot_rev(a);
+	ft_rot_rev(b);
 	write(1, "rrr\n", 4);
 }

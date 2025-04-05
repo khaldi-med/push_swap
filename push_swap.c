@@ -76,7 +76,7 @@ void	ft_parse_inp(char **s, t_stack **a)
 	char	**split;
 
 	i = 1;
-	if (!s)
+	if (s)
 		while (s[i])
 		{
 			if (!s[i] || *s[i] == '\0')
@@ -94,6 +94,7 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
+	int		size;
 
 	b = NULL;
 	a = NULL;
@@ -103,8 +104,17 @@ int	main(int ac, char **av)
 		ft_parse_inp(av, &a);
 	if (a && !ft_is_sorted(a))
 	{
-		ft_sort_stack(&a, &b);
-		ft_move_larg_to_a(&a, &b);
+		size = ft_stack_size(a);
+		if (size <= 3)
+			ft_sort_three(&a);
+		else if (size <= 5)
+			ft_sort_five(&a, &b);
+		else
+		{
+			ft_set_index(&a);
+			ft_sort_stack_rang(&a, &b, size <= 100 ? 15 : 30);
+			ft_move_larg_to_a(&a, &b);
+		}
 	}
 	ft_free_list(&a);
 	ft_free_list(&b);

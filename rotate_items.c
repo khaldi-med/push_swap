@@ -42,7 +42,7 @@ void	rb(t_stack **b)
 
 void	ra_rb(t_stack **a, t_stack **b)
 {
-	ra(a);
-	rb(b);
+	ft_rotate(a);
+	ft_rotate(b);
 	write(1, "rr\n", 3);
 }
