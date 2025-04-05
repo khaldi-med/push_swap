@@ -41,7 +41,7 @@ int	ft_is_sorted(t_stack *a)
 void	ft_sort_stack(t_stack **a, t_stack **b)
 {
 	int	size;
-
+	
 	ft_set_index(a);
 	size = ft_stack_size(*a);
 	if (size <= 3)

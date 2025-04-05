@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:44:31 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/05 00:16:45 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/05 00:43:15 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_process_split(char **split, t_stack **a)
 		j++;
 	while (split[j])
 	{
-		//write(2, "teste 3\n", 8);
+		// write(2, "teste 3\n", 8);
 		ft_process_number(split[j], a, split);
 		j++;
 	}
@@ -69,14 +69,14 @@ void	ft_parse_inp(char **s, t_stack **a)
 	i = 1;
 	while (s[i])
 	{
-		//write(2, "teste\n", 6);
+		// write(2, "teste\n", 6);
 		if (!s || !s[i] || *s[i] == '\0')
 		{
 			write(2, "Error\n", 6);
-			return ;
+			ft_free_list(a);
+			exit(1);
 		}
-		//write(2, "teste 2\n", 8);
-
+		// write(2, "teste 2\n", 8);
 		split = ft_split(s[i], ' ');
 		ft_process_split(split, a);
 		ft_free_stack(split);
@@ -95,12 +95,14 @@ int	main(int ac, char **av)
 		return (0);
 	if (ac > 1)
 		ft_parse_inp(av, &a);
-	if (!ft_is_sorted(a))
+	if (a && !ft_is_sorted(a))
 	{
 		ft_sort_stack(&a, &b);
 		ft_move_larg_to_a(&a, &b);
 		ft_free_list(&a);
 		ft_free_list(&b);
 	}
+	else if (a)
+		ft_free_list(&a);
 	return (0);
 }
