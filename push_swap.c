@@ -19,7 +19,11 @@ void	ft_add_back(t_stack **stack, int n)
 
 	new = malloc(sizeof(t_stack));
 	if (!new)
-		return ;
+	{
+		write(2, "Error\n", 6);
+		ft_free_list(stack);
+		exit(1);
+	}
 	new->value = n;
 	new->next = NULL;
 	tmp = *stack;
@@ -35,13 +39,24 @@ void	ft_add_back(t_stack **stack, int n)
 
 void	ft_process_number(char *num_str, t_stack **a, char **split)
 {
-	if ((ft_atoi(num_str) < INT_MIN) || (ft_atoi(num_str) > INT_MAX)
-		|| (ft_duplicate(*a, ft_atoi(num_str)) || ft_check_input(num_str)))
+	long	num;
+	
+	if (!num_str || ft_check_input(num_str))
 	{
+		write(2, "Error\n", 6);
 		ft_free_stack(split);
-		ft_print_error(a);
+		ft_free_list(a);
+		exit(1);
 	}
-	ft_add_back(a, ft_atoi(num_str));
+	num = ft_atoi(num_str);
+	if (num < INT_MIN || num > INT_MAX || ft_duplicate(*a, num))
+	{
+		write(2, "Error\n", 6);
+		ft_free_stack(split);
+		ft_free_list(a);
+		exit(1);
+	}
+	ft_add_back(a, num);
 }
 
 void	ft_process_split(char **split, t_stack **a)
@@ -49,9 +64,15 @@ void	ft_process_split(char **split, t_stack **a)
 	int	j;
 
 	j = 0;
-	while (*split[j] && ((*split[j] >= 9 && *split[j] <= 13)
-			|| *split[j] == ' '))
-		j++;
+	if (!split)
+		return;
+	if (!split[0])
+	{
+		write(2, "Error\n", 6);
+		ft_free_stack(split);
+		ft_free_list(a);
+		exit(1);
+	}
 	while (split[j])
 	{
 		ft_process_number(split[j], a, split);
@@ -65,15 +86,27 @@ void	ft_parse_inp(char **s, t_stack **a)
 	char	**split;
 
 	i = 1;
+	if (!s)
+	{
+		write(2, "Error\n", 6);
+		ft_free_list(a);
+		exit(1);
+	}
 	while (s[i])
 	{
-		if (!s || !s[i] || *s[i] == '\0')
+		if (!s[i] || *s[i] == '\0')
 		{
 			write(2, "Error\n", 6);
 			ft_free_list(a);
 			exit(1);
 		}
 		split = ft_split(s[i], ' ');
+		if (!split)
+		{
+			write(2, "Error\n", 6);
+			ft_free_list(a);
+			exit(1);
+		}
 		ft_process_split(split, a);
 		ft_free_stack(split);
 		i++;
@@ -92,8 +125,12 @@ int	main(int ac, char **av)
 	if (ac > 1)
 		ft_parse_inp(av, &a);
 	if (a && !ft_is_sorted(a))
+	{
 		ft_sort_stack(&a, &b);
-	ft_move_larg_to_a(&a, &b);
+		if (b)
+			ft_move_larg_to_a(&a, &b);
+	}
 	ft_free_list(&a);
+	ft_free_list(&b);
 	return (0);
 }

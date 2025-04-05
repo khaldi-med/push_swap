@@ -17,18 +17,23 @@ void	ft_free_stack(char **split)
 	int	i;
 
 	i = 0;
-	if (!split || !(*split))
+	if (!split)
 		return ;
 	while (split[i])
-		free(split[i++]);
+	{
+		if (split[i])
+			free(split[i]);
+		i++;
+	}
 	free(split);
 }
 
 void	ft_free_list(t_stack **stack)
-{	if(!*stack)
-		return;
+{
 	t_stack	*tmp;
 
+	if (!stack || !(*stack))
+		return ;
 	while (*stack)
 	{
 		tmp = *stack;
