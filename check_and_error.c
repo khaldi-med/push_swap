@@ -38,8 +38,14 @@ int	ft_check_input(char *s)
 	int	i;
 
 	i = 0;
+	if (!s || !*s)
+		return (1);
+	if ((s[i] == '+' || s[i] == '-') && !s[i + 1])
+		return (1);
 	if (s[i] == '+' || s[i] == '-')
 		i++;
+	if (!s[i])
+		return (1);
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
