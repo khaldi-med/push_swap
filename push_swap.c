@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:44:31 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/05 03:42:28 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/05 03:55:10 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	ft_parse_inp(char **s, t_stack **a)
 
 	i = 1;
 	if (s)
+	{
 		while (s[i])
 		{
 			if (!s[i] || *s[i] == '\0')
@@ -88,6 +89,7 @@ void	ft_parse_inp(char **s, t_stack **a)
 			ft_free_stack(split);
 			i++;
 		}
+	}
 }
 
 int	main(int ac, char **av)
