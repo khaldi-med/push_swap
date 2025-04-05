@@ -29,7 +29,7 @@ int	ft_is_sorted(t_stack *a)
 {
 	if (!a)
 		return (0);
-	while (a)
+	while (a->next)
 	{
 		if (a->value > a->next->value)
 			return (0);

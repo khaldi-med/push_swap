@@ -25,7 +25,8 @@ void	ft_free_stack(char **split)
 }
 
 void	ft_free_list(t_stack **stack)
-{
+{	if(!*stack)
+		return;
 	t_stack	*tmp;
 
 	while (*stack)

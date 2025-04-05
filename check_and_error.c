@@ -16,7 +16,7 @@ void	ft_print_error(t_stack **a)
 {
 	write(2, "Error\n", 6);
 	ft_free_list(a);
-	exit(0);
+	return;
 }
 
 int	ft_duplicate(t_stack *stack, int n)
