@@ -6,7 +6,7 @@
 #    By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/18 22:35:22 by mohkhald          #+#    #+#              #
-#    Updated: 2025/04/04 20:32:38 by mohkhald         ###   ########.fr        #
+#    Updated: 2025/04/07 09:37:52 by mohkhald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ RM = rm -Rf
 
 all: $(NAME)
 
-$(NAME): $(OBJ) 
+$(NAME):$(SRCS) $(PRINTF) $(LIBFT)
 	@make -C ft_printf/
 	@make -C libft/
 	@$(CC) $(CFLAGS) $(SRCS) $(PRINTF) $(LIBFT) -o $(NAME)

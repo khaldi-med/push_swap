@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 22:17:35 by mohkhald          #+#    #+#             */
-/*   Updated: 2025/04/04 20:28:38 by mohkhald         ###   ########.fr       */
+/*   Updated: 2025/04/07 09:35:00 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "./ft_printf/ft_printf.h"
 # include "./libft/libft.h"
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
